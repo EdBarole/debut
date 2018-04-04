@@ -1,0 +1,91 @@
+
+<style type="text/css">
+	.panel { background-color: rgb(255,255,255); }
+	.panel .panel-title { color: #666; }
+	.panel .panel-body { color: #222; }
+</style>
+
+<div>
+	
+	<div class="page-content" style="padding-top: 20px">
+
+		<div style="padding-bottom: 10px">
+			<div id="breadcrumb">
+				<ol class="breadcrumb">
+			        <li>
+				        <a href="#!/dashboard" style="color: #eee">Dashboard</a>
+			        </li>
+			        <li>
+				        <a href="#!/users" style="color: #eee">Users</a>
+			        </li>
+			        <li class="active" style="font-weight: 600 !important; color: #eee">
+			        	Add User
+			        </li>
+			    </ol>
+		    </div>
+		</div>
+
+		<div class="panel">
+			<div class="panel-body">
+
+				<form ng-submit="submitForm()" autocomplete="off">
+					<div class="row">
+
+						<div class="col-md-12">
+							<h2 class="panel-heading-text">
+			                    Add User
+			                </h2>
+							<div>&nbsp;</div>
+			            </div>
+
+						<div class="col-md-6">
+							<div class="form-group form-material">
+								<label class="control-label" style="font-size: 12px">Name:</label>
+								<div>
+									<input ng-model="input.name" type="text" class="form-control" placeholder="Name" style="font-size: 16px; color: #333">
+								</div>
+								<div ng-show="errors && input.name==''" class="error-caption">The name is required!</div>
+							</div>
+							<div class="form-group form-material">
+								<label class="control-label" style="font-size: 12px">Email address:</label>
+								<div>
+									<input ng-model="input.email" type="text" class="form-control" placeholder="Email address" style="font-size: 16px; color: #333">
+								</div>
+								<div ng-show="errors && input.email==''" class="error-caption">The email is required!</div>
+							</div>
+							<div class="form-group form-material">
+								<label class="control-label" style="font-size: 12px">Password:</label>
+								<div>
+									<input ng-model="input.password" type="password" class="form-control" placeholder="Password" style="font-size: 16px; color: #333">
+								</div>
+								<div ng-show="errors && input.password==''" class="error-caption">The password is required!</div>
+							</div>
+							<div class="form-group form-material">
+								<label class="control-label" style="font-size: 12px">Status:</label>
+								<div>
+									<input ng-model="input.enabled" id="status" type="checkbox" />
+									<label for="status" style="cursor: pointer">
+										{{ input.enabled ? 'Enabled' : 'Disabled' }}
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12">
+							<button type="submit" class="btn btn-danger">Submit</button>
+							&nbsp;
+							<a href="#!/users">
+								<button type="button" class="btn btn-default">Cancel</button>
+							</a>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+	$('#fname').focus();
+</script>

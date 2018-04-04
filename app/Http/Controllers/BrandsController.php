@@ -8,11 +8,11 @@ use App\Brand;
 class BrandsController extends Controller
 {
     /**
-     * Share hard coded values until php7-pgsql module is installed
+     * Global variables available to methods in this class definition.
      * 
      * @var array
      */
-    private $brands;
+    private $start_date;
 
     /**
      * Create a new controller instance.
@@ -21,16 +21,7 @@ class BrandsController extends Controller
      */
     public function __construct()
     {
-        $this->brands = collect([]);
-
-        $this->brands->push(['title' => 'Blue Chips', 'price' => 102, 'amount_invested' => 103.99, 'purchases' => false]);
-        $this->brands->push(['title' => 'Delicious Dividends', 'price' => 50, 'amount_invested' => 51.89, 'purchases' => false]);
-        $this->brands->push(['title' => 'Roll with Buffet', 'price' => 45, 'amount_invested' => 51.53, 'purchases' => false]);
-        $this->brands->push(['title' => 'Water the World', 'price' => 30, 'amount_invested' => 33.32, 'purchases' => false]);
-        $this->brands->push(['title' => 'Aggressive Mix', 'price' => 25, 'amount_invested' => 25.52, 'purchases' => false]);
-        $this->brands->push(['title' => 'Defending America', 'price' => 25, 'amount_invested' => 28.59, 'purchases' => false]);
-        $this->brands->push(['title' => 'Moderate Mix', 'price' => 25, 'amount_invested' => 25.40, 'purchases' => false]);
-        $this->brands->push(['title' => 'Robots Rising', 'price' => 25, 'amount_invested' => 29.35, 'purchases' => false]);
+        $this->middleware('auth:api')->except(['index', 'create', 'show']);
     }
 
     /**
@@ -40,6 +31,32 @@ class BrandsController extends Controller
      */
     public function index()
     {
-        return response()->json($this->brands, 200);
+        $items = Brand::all();
+
+        return response()->json($items, 200);
+    }
+
+    /**
+     * Persists the information the form.
+     * 
+     * @return array
+     */
+    public function create(Request $request)
+    {
+        Brand::create($request->all());
+
+        return response()->json(['data' => 'Resource created.'], 201);
+    }
+
+    /**
+     * Gets a particular resource by $id.
+     * 
+     * @return array
+     */
+    public function show($id)
+    {
+        $item = Brand::find($id);
+
+        return response()->json($item, 200);
     }
 }

@@ -1,0 +1,91 @@
+
+<style type="text/css">
+	.panel { background-color: rgb(255,255,255); }
+	.panel .panel-title { color: #666; }
+	.panel .panel-body { color: #222; }
+</style>
+
+<div>
+	
+	<div class="page-content" style="padding-top: 20px">
+
+		<div style="padding-bottom: 10px">
+			<div id="breadcrumb">
+				<ol class="breadcrumb">
+			        <li>
+				        <a href="#!/dashboard" style="color: #eee">Dashboard</a>
+			        </li>
+			        <li>
+				        <a href="#!/posts" style="color: #eee">Posts</a>
+			        </li>
+			        <li class="active" style="font-weight: 600 !important; color: #eee">
+			        	Add Post
+			        </li>
+			    </ol>
+		    </div>
+		</div>
+
+		<div class="panel">
+			<div class="panel-body">
+
+				<form ng-submit="submitForm()" autocomplete="off">
+					<div class="row">
+
+						<div class="col-md-12">
+							<h2 class="panel-heading-text">
+			                    Add Post
+			                </h2>
+							<div>&nbsp;</div>
+			            </div>
+
+						<div class="col-md-6">
+							<div class="form-group form-material">
+								<label class="control-label" style="font-size: 12px">Title:</label>
+								<div>
+									<input ng-model="input.title" type="text" class="form-control" placeholder="Title" style="font-size: 16px; color: #333">
+								</div>
+								<div ng-show="errors && input.title==''" class="error-caption">The title is required!</div>
+							</div>
+							<div class="form-group form-material">
+								<label class="control-label" style="font-size: 12px">Summary:</label>
+								<div>
+									<input ng-model="input.summary" type="text" class="form-control" placeholder="Price" style="font-size: 16px; color: #333">
+								</div>
+								<div ng-show="errors && input.summary==''" class="error-caption">The summary is required!</div>
+							</div>
+							<div class="form-group form-material">
+								<label class="control-label" style="font-size: 12px">Contents:</label>
+								<div>
+									<input ng-model="input.contents" type="text" class="form-control" placeholder="Amount invested" style="font-size: 16px; color: #333">
+								</div>
+								<div ng-show="errors && input.contents==''" class="error-caption">The contents are required!</div>
+							</div>
+							<div class="form-group form-material">
+								<label class="control-label" style="font-size: 12px">Status:</label>
+								<div>
+									<input ng-model="input.enabled" id="status" type="checkbox" />
+									<label for="status" style="cursor: pointer">
+										{{ input.enabled ? 'Enabled' : 'Disabled' }}
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12">
+							<button type="submit" class="btn btn-danger">Submit</button>
+							&nbsp;
+							<a href="#!/posts">
+								<button type="button" class="btn btn-default">Cancel</button>
+							</a>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+	$('#fname').focus();
+</script>

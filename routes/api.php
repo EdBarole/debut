@@ -18,7 +18,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('brands', 'BrandsController@index');
+Route::post('brands', 'BrandsController@create');
+Route::get('brands/{id}', 'BrandsController@show');
 
 Route::get('posts', 'PostsController@index');
+Route::post('posts', 'PostsController@create');
+Route::get('posts/{id}', 'PostsController@show');
 
 Route::get('users', 'UsersController@index');
+Route::post('users', 'UsersController@create');
+Route::get('users/{id}', 'UsersController@show');

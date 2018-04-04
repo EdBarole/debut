@@ -1,0 +1,90 @@
+
+<style type="text/css">
+    .panel { background-color: rgb(255,255,255); }
+</style>
+
+<div>
+
+    <div class="page-content" style="padding-top: 20px">
+
+        <div style="padding-bottom: 10px">
+            <div id="breadcrumb">
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="#!/dashboard" style="color: #eee">Dashboard</a>
+                    </li>
+                    <li class="active" style="font-weight: 600 !important; color: #eee">
+                        Posts
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-12 col-md-9">
+
+        <div class="panel">
+            <div class="panel-body">
+
+                <div ng-show="notification.visible" class="alert dark alert-icon {{ notification.class }} alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <i class="icon {{ notification.icon }}" aria-hidden="true"></i>
+                    {{ notification.message }}
+                </div>
+
+                <table datatable="" dt-options="dtOptions" dt-columns="dtColumns" class="table-hover dataTable table-striped"></table>
+
+            </div>
+        </div>
+
+            </div>
+
+            <div class="col-sm-12 col-md-3">
+                <div class="panel">
+                    <div class="panel-body" style="padding: 10px">
+                        <div class="panel-sub-text">
+                            Posts
+                            <div class="pull-right" style="font-weight: 600 !important">{{ posts.length }}</div>
+                        </div>
+                        <div>
+                            <a class="popup-modal btn btn-danger btn-medium-size" ng-href="#!/posts/add">
+                                Add post
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div><!-- /page-content -->
+
+</div>
+
+<modal-dialog show="showDialog" dialog-title="" height="320px" width="360px">
+    <div class="wrapper-dialog">
+        <div class="dialog-title">
+            Title
+        </div>
+        <div class="dialog-content">
+            {{ post.title }}
+        </div>
+        <div class="dialog-title">
+            Created At
+        </div>
+        <div class="dialog-content">
+            {{ post.created_at }}
+        </div>
+        <div>
+            <a href="#!/posts/{{ post.index }}/edit">
+                <button class="btn btn-danger" style="width: 100%">Edit post</button>
+            </a>
+        </div>
+        <div>
+            <button ng-click="delete(post.index)" class="btn btn-danger" style="width: 100%">Delete</button>
+        </div>
+    </div>
+</modal-dialog>

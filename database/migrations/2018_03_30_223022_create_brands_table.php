@@ -18,7 +18,7 @@ class CreateBrandsTable extends Migration
             $table->text('title');
             $table->text('price');
             $table->integer('amount_invested');
-            $table->boolean('purchases');
+            $table->boolean('purchases')->default(false);
             $table->timestamps();
         });
     }

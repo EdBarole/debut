@@ -25,10 +25,10 @@ class PostTableSeeder extends Seeder
 
         foreach ($posts as $post)
         {
-            post::create([
-                'title' => $post->title,
-                'summary' => $post->summary,
-                'contents' => $post->contents
+            Post::create([
+                'title' => $post['title'],
+                'summary' => $post['summary'],
+                'contents' => $post['contents']
             ]);
         }
     }
