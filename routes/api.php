@@ -17,14 +17,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('brands', 'BrandsController@index');
-Route::post('brands', 'BrandsController@create');
-Route::get('brands/{id}', 'BrandsController@show');
+Route::get('brands', 'API\BrandsController@index');
+Route::post('brands', 'API\BrandsController@create');
+Route::get('brands/{id}', 'API\BrandsController@show');
 
-Route::get('posts', 'PostsController@index');
-Route::post('posts', 'PostsController@create');
-Route::get('posts/{id}', 'PostsController@show');
+Route::get('posts', 'API\PostsController@index');
+Route::post('posts', 'API\PostsController@create');
+Route::get('posts/{id}', 'API\PostsController@show');
 
-Route::get('users', 'UsersController@index');
-Route::post('users', 'UsersController@create');
-Route::get('users/{id}', 'UsersController@show');
+Route::get('users', 'API\UsersController@index');
+Route::post('users', 'API\UsersController@create');
+Route::get('users/{id}', 'API\UsersController@show');
