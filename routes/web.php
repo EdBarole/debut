@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('models');
 });
 
 Route::group(['prefix' => 'admin'], function () {
@@ -26,7 +26,8 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('users', 'UsersController@index');
     Route::get('users/add', 'UsersController@create');
-    Route::get('users/profile', function () {
+    Route::get('users/{id}/profile', function () {
         return view('console.users.profile');
     });
 });
+

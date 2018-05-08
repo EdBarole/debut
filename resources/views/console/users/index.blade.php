@@ -5,13 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Melek Admin</title>
+    <title>Admin Panel</title>
 
     <!-- Bootstrap -->
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/waves.min.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ asset('css/nanoscroller.css') }}" rel="stylesheet">
-    <!-- <link href="{{ asset('css/nanoscroller.css') }}" rel="stylesheet"> -->
     <link href="{{ asset('css/menu-light.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
@@ -23,6 +22,9 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style type="text/css">
+        .table tbody tr:hover { background-color: #666; cursor: pointer; }
+    </style>
 </head>
 <body class="fixed-navbar fixed-sidebar">
     <!-- Static navbar -->
@@ -85,10 +87,15 @@
                                         </tfoot>
                                         <tbody>
                                             @foreach ($users as $user)
-                                            <tr>
+                                            <tr data-toggle="modal" data-target="#myModal"
+                                                data-json='{ "id": {{ $user->id }}, "name": "{{ $user->name }}", "email": "{{ $user->email }}", "phone": "{{ $user->phone }}", "enabled": {{ $user->enabled }}, "created_at": "{{ $user->created_at }}" }'>
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->email }}</td>
-                                                <td>Enabled</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-xs {{ $user->enabled ? 'btn-warning' : 'btn-danger' }}">
+                                                        {{ $user->enabled ? 'Enabled' : 'Disabled' }}
+                                                    </button>
+                                                </td>
                                                 <td>{{ $user->created_at }}</td>
                                             </tr>
                                             @endforeach
@@ -104,6 +111,44 @@
         </div>
 
     </section>
+
+    <!-- Edit modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 id="myModalName" class="modal-title">Sebastian Njose</h4>
+                    <!-- <small>sebastian@njose.com</small> -->
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-4 text-right">Email</div>
+                        <div id="myModalEmail" class="col-sm-8">sebastian@njose.com</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 text-right">Phone</div>
+                        <div id="myModalPhone" class="col-sm-8">+256712177278</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 text-right">Status</div>
+                        <div id="myModalStatus" class="col-sm-8">Enabled</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 text-right">Created at</div>
+                        <div id="myModalCreatedAt" class="col-sm-8">2018-05-05 12:32:05</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+                    <a id="modalViewProfile" href="#">
+                        <button type="button" class="btn btn-accent" style="width: 100%">View profile</button>
+                    </a>
+                    <div style="height: 10px"></div>
+                    <button type="button" class="btn btn-danger" style="width: 100%">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
@@ -117,9 +162,25 @@
     <script src="{{ asset('js/data-tables/dataTables.bootstrap.js') }}"></script>
     <script src="{{ asset('js/data-tables/dataTables.responsive.js') }}"></script>
     <script src="{{ asset('js/waves.min.js') }}"></script>
-    <!-- <script src="{{ asset('js/jquery.nanoscroller.min.js') }}"></script> -->
     <script type="text/javascript" src="{{ asset('js/custom.js') }}"></script>
-    <script src="{{ asset('js/data-tables/tables-data.js') }}"></script> 
+    <!--
+    <script src="{{ asset('js/data-tables/tables-data.js') }}"></script>
+    -->
+    <script type="text/javascript">
+        $(function(){
+            $('.table tbody tr').on('click', function(){
+                var obj = $(this).data('json');
+                // console.log(obj);
+                var status = obj.enabled ? 'Enabled' : 'Disabled';
+                $('#myModalName').html(obj.name);
+                $('#myModalEmail').html(obj.email);
+                $('#myModalPhone').html(obj.phone);
+                $('#myModalStatus').html(status);
+                $('#myModalCreatedAt').html(obj.created_at);
+                $('#modalViewProfile').attr('href', 'users/' + obj.id + '/profile');
+            });
+        });
+    </script>
 
 </body>
 </html>
