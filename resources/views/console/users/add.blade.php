@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Melek Admin</title>
+    <title>Admin Panel</title>
 
     <!-- Bootstrap -->
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -50,11 +50,11 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-title">
-                            <h1>Add brand <small></small></h1>
+                            <h1>Add user <small></small></h1>
                             <ol class="breadcrumb">
                                 <li><a href="{{ url('admin') }}"><i class="fa fa-home"></i></a></li>
                                 <li>
-                                    <a href="{{ url('admin/brands') }}">Brands</a>
+                                    <a href="{{ url('admin/users') }}">Users</a>
                                 </li>
                                 <li class="active">Add new</li>
                             </ol>
@@ -66,36 +66,45 @@
                         <div class="panel panel-card recent-activites">
                             <!-- Start .panel -->
                             <div class="panel-body">
-                                <form class="form-horizontal group-border stripped">
+                                <form action="{{ action('UsersController@store') }}" method="post" class="form-horizontal group-border stripped">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="form-group form-group-lg">
                                         <label class="col-lg-2 col-md-3 control-label">Name</label>
                                         <div class="col-lg-10 col-md-9">
-                                            <input type="text" placeholder="Name" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-lg-2 col-md-3 control-label">Fancy select</label>
-                                        <div class="col-lg-10 col-md-9">
-                                            <select class="fancy-select form-control">
-                                                <option value="Amsterdam">Amsterdam</option>
-                                                <option value="Washington">Washington</option>
-                                                <option value="Sydney">Sydney</option>
-                                                <option value="Beijing">Beijing</option>
-                                                <option value="Cairo">Cairo</option>
-                                            </select>
+                                            <input type="text" name="name" placeholder="Name" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group form-group-lg">
-                                        <label class="col-lg-2 col-md-3 control-label">Phone number</label>
+                                        <label class="col-lg-2 col-md-3 control-label">Phone</label>
                                         <div class="col-lg-10 col-md-9">
-                                            <input type="text" data-masked="" data-inputmask="'mask': '(999) 999-9999'" placeholder="Phone number" class="form-control">
+                                            <input type="text" name="phone" data-masked="" data-inputmask="'mask': '(999) 999-9999'" placeholder="Phone" class="form-control">
                                         </div>
                                     </div>
-                                    <!-- End .form-group  -->
+                                    <div class="form-group form-group-lg">
+                                        <label class="col-lg-2 col-md-3 control-label">Email address</label>
+                                        <div class="col-lg-10 col-md-9">
+                                            <input type="text" name="email" placeholder="Email address" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-lg">
+                                        <label class="col-lg-2 col-md-3 control-label">Password</label>
+                                        <div class="col-lg-10 col-md-9">
+                                            <input type="password" name="password" placeholder="Password" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-2 col-md-3 control-label">Status</label>
+                                        <div class="col-lg-10 col-md-9">
+                                            <select name="enabled" class="fancy-select form-control">
+                                                <option value="true">Enabled</option>
+                                                <option value="false">Disabled</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <div class="col-sm-2">&nbsp;</div>
                                         <div class="col-sm-6">
-                                            <button class="btn btn-primary">Submit</button>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
                                             <button class="btn btn-link">Cancel</button>
                                         </div>
                                     </div>

@@ -26,6 +26,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('users', 'UsersController@index');
     Route::get('users/add', 'UsersController@create');
+    Route::post('users/add', 'UsersController@store');
     Route::get('users/{id}/profile', function () {
         return view('console.users.profile');
     });

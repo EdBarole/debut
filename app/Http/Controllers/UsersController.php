@@ -23,4 +23,11 @@ class UsersController extends Controller
     {
         return view('console.users.add');
     }
+
+    public function store(Request $request)
+    {
+        User::create($request->all());
+
+        return redirect('admin/users');
+    }
 }
