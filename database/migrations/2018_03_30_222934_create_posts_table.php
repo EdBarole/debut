@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->text('title');
             $table->text('summary');
             $table->text('contents');
+            $table->boolean('published')->default(true);
             $table->timestamps();
         });
     }

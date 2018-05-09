@@ -28,7 +28,8 @@ class PostTableSeeder extends Seeder
             Post::create([
                 'title' => $post['title'],
                 'summary' => $post['summary'],
-                'contents' => $post['contents']
+                'contents' => $post['contents'],
+                'published' => true
             ]);
         }
     }
