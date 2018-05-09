@@ -7,7 +7,6 @@
 
     <title>Admin Panel</title>
 
-    <!-- Bootstrap -->
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/waves.min.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ asset('css/nanoscroller.css') }}" rel="stylesheet">
@@ -18,6 +17,7 @@
     <link href="{{ asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/themify-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('css/color.css') }}" rel="stylesheet">
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -126,9 +126,8 @@
     <script src="{{ asset('js/pace.min.js') }}"></script>
     <script src="{{ asset('js/waves.min.js') }}"></script>
     <script src="{{ asset('js/jquery-jvectormap-world-mill-en.js') }}"></script>
-    <!-- <script src="{{ asset('js/jquery.nanoscroller.min.js') }}"></script>-->
     <script type="text/javascript" src="{{ asset('js/custom.js') }}"></script>
-    <!--page plugins-->
+
     <script src="{{ asset('js/select/fancySelect.js') }}"></script>
     <script src="{{ asset('js/input-mask/jquery.inputmask.bundle.min.js') }}"></script>
     <script src="{{ asset('js/select/select2.js') }}"></script>

@@ -7,7 +7,6 @@
 
     <title>Admin Panel</title>
 
-    <!-- Bootstrap -->
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/waves.min.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ asset('css/nanoscroller.css') }}" rel="stylesheet">

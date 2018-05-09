@@ -5,17 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Melek Admin</title>
+    <title>Admin Panel</title>
 
-    <!-- Bootstrap -->
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/waves.min.css" type="text/css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/nanoscroller.css') }}">
-    <!-- <link rel="stylesheet" href="{{ asset('css/nanoscroller.css') }}"> -->
     <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/themify-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('css/color.css') }}" rel="stylesheet">
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
